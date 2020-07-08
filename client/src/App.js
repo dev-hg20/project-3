@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import SearchPage from "../src/pages/searchPage";
-import SavedPage from "../src/pages/savedPage";
-import Wrapper from "../src/components/Wrapper";
-import Header from "../src/components/Header";
+import loginPage from "../src/pages/loginPage";
+import Container from "../src/components/Container";
 
 import "./App.css";
 
@@ -11,11 +9,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header></Header>
-        <Wrapper>
-          <Route exact path="/" component={SearchPage} />
-          <Route exact path="/saved" component={SavedPage} />
-        </Wrapper>
+        <Container>
+          <Route exact path="/" component={loginPage} />
+        </Container>
       </Router>
     </div>
   );
