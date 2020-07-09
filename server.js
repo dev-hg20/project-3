@@ -1,7 +1,12 @@
 const express = require("express");
+const session = require("express-session");
+const passport = require("./config/passport");
+const db = require("./models");
+const htmlRoutes = require("./routes/htmlRoutes");
+const apiUserRoutes = require("./routes/user-apiRoutes");
+const apiStoriesRoutes = require("./routes/story-apiRoutes");
 
-const mongoose = require("mongoose");
-const routes = require("./routes");
+// Set up port to work with Heroku as well
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -13,15 +18,27 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-app.use(routes);
+app.use("/api/stories", apiStoriesRoutes);
+app.use("/api", apiUserRoutes);
+app.use("/", htmlRoutes);
 
-// Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
-  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+// // Connect to the Mongo DB
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tacos", {
+//   useUnifiedTopology: true,
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+// });
+
+// Configure express to use sessions and passport middleware for authentication
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Start the API server
-app.listen(PORT, function () {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// Sync the database and log a message upon success
+db.sequelize.sync({}).then(function () {
+  app.listen(PORT, () => {
+    console.log(`Server listening on: http://localhost:${PORT}`);
+  });
 });

@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const List = sequelize.define("List", {
+  const Restaurant = sequelize.define("Restaurant", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -14,20 +14,20 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  List.associate = function (models) {
+  Restaurant.associate = function (models) {
     //a story belongs to an author and belongs to a category due to the foreign keys
 
-    List.belongsTo(models.User, {
+    Restaurant.belongsTo(models.User, {
       foreignKey: {
         allowNull: false,
       },
     });
-    List.belongsTo(models.Category, {
+    Restaurant.belongsTo(models.Cuisine, {
       foreignKey: {
         allowNull: false,
       },
     });
   };
 
-  return Story;
+  return Restaurant;
 };

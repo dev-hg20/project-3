@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "viral_db",
+    "password": "Lemonade123!",
+    "database": "taco_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "corona_test",
+    "password": "Lemonade123!",
+    "database": "taco_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

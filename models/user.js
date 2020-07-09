@@ -4,13 +4,13 @@ const bcrypt = require("bcryptjs");
 //creating user model
 module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define("User", {
-    name: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        is: /^[a-zA-Z0-9]*$/i,
-      },
+      // validate: {
+      //   is: /^[a-zA-Z0-9]*$/i,
+      // },
     },
     // The password cannot be null
     password: {
@@ -40,9 +40,9 @@ module.exports = function (sequelize, DataTypes) {
     );
   });
 
-  User.associate = function (models) {
-    User.hasMany(models.Story, {});
-  };
+  // User.associate = function (models) {
+  //   User.hasMany(models.Story, {});
+  // };
 
   return User;
 };

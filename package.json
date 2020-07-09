@@ -21,17 +21,25 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.18.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
     "express": "^4.16.3",
+    "express-session": "^1.17.1",
     "fontsource-roboto": "^2.1.4",
     "if-env": "^1.0.4",
     "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.3.16",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.0",
     "react-dom": "^16.13.1",
     "react-event-handler": "^1.0.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "sequelize": "^6.3.0"
   }
 }
