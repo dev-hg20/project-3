@@ -1,7 +1,48 @@
 import React from "react";
+import Modal from "../components/Modal";
+
+const axios = require("axios");
 
 function loginPage() {
-  // const classes = useStyles();
+  //Make a request for a user
+  async function loginUser(userData) {
+    return axios({
+      method: "POST",
+      url: "/api/login",
+      data: userData,
+    });
+  }
+
+  // Event handler for login form submit - validate user details and redirect to the homepage
+  const { usernameInput } = "#name-input";
+  const { passwordInput } = "#password-input";
+
+  async function handleFormSubmit(event) {
+    try {
+      event.preventDefault();
+      console.log("clicked2");
+
+      const userData = {
+        name: { usernameInput },
+        password: { passwordInput },
+      };
+      console.log({ usernameInput }, { passwordInput });
+
+      if (!userData.name || !userData.password) {
+        return "Please enter a user name and password!";
+      }
+
+      // const result = await loginUser(userData);
+      // if (result) {
+      //   window.location.replace("/");
+      // }
+    } catch (error) {
+      if (error.status === 401) {
+        return "Incorrect user name or password!";
+      }
+      // handleError(error);
+    }
+  }
 
   return (
     <div className="container">
@@ -16,32 +57,38 @@ function loginPage() {
             <div className="input-field col s12 ">
               <input
                 placeholder="User Name"
-                id="name-input"
+                id={usernameInput}
                 type="text"
-                class="validate"
+                className="validate"
               ></input>
-              <label for="name-input">Name</label>
+              <label htmlFor="name-input">Name</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12 ">
               <input
                 placeholder="Password"
-                id="password-input"
+                id={passwordInput}
                 type="password"
-                class="validate"
+                className="validate"
               ></input>
-              <label for="password-input">Password</label>
+              <label htmlFor="password-input">Password</label>
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s12 center-align">
+          <div className="row">
+            <div className="input-field col s12 center-align">
               <button
-                class="btn waves-effect waves-light rounded"
+                className="btn waves-effect waves-light rounded"
                 type="submit"
+                onClick={handleFormSubmit}
               >
                 Login
               </button>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s12 center-align">
+              <a href="/signin">Don't have an account? Sign up</a>
             </div>
           </div>
         </form>

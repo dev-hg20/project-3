@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `Cuisines` (
 
 CREATE TABLE IF NOT EXISTS `Users` (
     `id` INTEGER NOT NULL auto_increment , 
-    `email` VARCHAR(255) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
     `fullName` varchar(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL, 
     `createdAt` DATETIME DEFAULT CURRENT_TIMESTAMP, 
@@ -45,8 +45,18 @@ CREATE TABLE IF NOT EXISTS `Restaurants` (
 CREATE TABLE IF NOT EXISTS `Reviews` (
     `id` INTEGER NOT NULL auto_increment , 
     `ratings` VARCHAR(255) NOT NULL, 
+    `UserId` INTEGER NOT NULL, 
     PRIMARY KEY (`id`), 
     FOREIGN KEY (`UserId`) REFERENCES `Users` (`id`) 
         ON DELETE NO ACTION ON UPDATE CASCADE);
-    
-        
+
+
+
+
+-- INSERT INTO Cuisines (name) VALUES ("Italian"),("Chinese"),("Australian"),("Vietnamese");
+
+-- SELECT * from Cuisines;
+
+-- INSERT INTO  Users (id, email, fullName, password) VALUES ("1","d.price@gmail.com", "Dylan Price", "$2a$10$sgjuiLpGaMbth5DyqBSv9ekqBMWq9PSxaybA/PYePnJirXbcbJFV6");
+
+-- SELECT * from Users;

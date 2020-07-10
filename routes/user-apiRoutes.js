@@ -12,7 +12,7 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 });
 
 //logging the user in
-router.post("/signup", function (req, res) {
+router.post("/signin", function (req, res) {
   db.User.create({
     name: req.body.name,
     fullName: req.body.fullName,

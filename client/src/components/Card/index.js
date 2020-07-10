@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "@material-ui/core";
 
 function Cards() {
   return (
@@ -15,7 +14,7 @@ function Cards() {
             </p>
           </div>
           <div class="card-action">
-            <a href="#">This is a link to the restaurant</a>
+            <a href="value">This is a link to the restaurant</a>
           </div>
         </div>
       </div>
