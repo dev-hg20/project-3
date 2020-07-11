@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProfileCard from "../components/profileCard";
+import { AuthContext } from "../components/Context/AuthContext";
 
 function profilePage() {
-  const { userState } = this.state;
+  const { user } = useContext(AuthContext);
   return (
     <div class="container">
-      {userState.map((user, index) => {
-        return <ProfileCard key={index} user={user} />;
-      })}
-
+      <ProfileCard fullname={user.dataValues.fullName} />
       <div></div>
       <div class="blue-grey-text left-align hidden user-profile-image">
         <h5 class="user-profile-title">My Favourites</h5>

@@ -1,8 +1,6 @@
 import React from "react";
 
 function ProfileCard(props) {
-  const { user } = props;
-
   return (
     <div>
       <div class="card">
@@ -12,7 +10,7 @@ function ProfileCard(props) {
             alt="user avatar"
             class="circle responsive-img avatar-img"
           ></img>
-          <div class="title">{user.fullName}</div>
+          <div class="title">{props.fullname}</div>
         </div>
       </div>
     </div>

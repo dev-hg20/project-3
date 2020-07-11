@@ -38,11 +38,12 @@ router.get("/logout", function (req, res) {
 // GET data about user
 router.get("/user_data", function (req, res) {
   if (req.user) {
-    res.json({
+    const userData = res.json({
       name: req.user.name,
       fullName: req.user.fullName,
       password: req.user.password,
     });
+    res.json({ userData });
   }
   res.json({});
 });
