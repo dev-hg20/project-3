@@ -1,8 +1,10 @@
 import React from "react";
+import ProfileCard from "../profileCard";
 
 function LeftMenu() {
   return (
-    <div class="card-panel left-nav-panel">
+    <div>
+      <ProfileCard></ProfileCard>
       <div>
         <ul class="collection">
           <a href="#!" class="collection-item">

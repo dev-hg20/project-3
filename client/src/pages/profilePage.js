@@ -1,20 +1,15 @@
 import React from "react";
+import ProfileCard from "../components/profileCard";
 
 function profilePage() {
-  // const classes = useStyles();
-
+  const { userState } = this.state;
   return (
     <div class="container">
-      <div class="card">
-        <div class="card-content s12 center-align">
-          <img
-            src="/assets/images/user_avatar.png"
-            alt="user avatar"
-            class="circle responsive-img avatar-img"
-          ></img>
-          <div class="title"></div>
-        </div>
-      </div>
+      {userState.map((user, index) => {
+        return <ProfileCard key={index} user={user} />;
+      })}
+
+      <div></div>
       <div class="blue-grey-text left-align hidden user-profile-image">
         <h5 class="user-profile-title">My Favourites</h5>
       </div>

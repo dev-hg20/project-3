@@ -19,7 +19,6 @@ function loginPage({ history }) {
   async function handleFormSubmit(event) {
     try {
       event.preventDefault();
-      console.log(usernameInput, passwordInput); //reading name and password
       if (!usernameInput || !passwordInput) {
         return;
       }
@@ -80,7 +79,7 @@ function loginPage({ history }) {
           </div>
           <div className="row">
             <div className="input-field col s12 center-align">
-              <Link to="/signin">Don't have an account? Sign up</Link>
+              <Link to="/signup">Don't have an account? Sign up</Link>
             </div>
           </div>
         </form>

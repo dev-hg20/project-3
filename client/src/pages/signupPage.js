@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 const axios = require("axios");
 
-function signinPage() {
+function signupPage() {
   const [usernameInput, setUserNameInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
   const [fullNameInput, setFullNameInput] = useState();
   const [passwordConfirmInput, setPasswordConfirmInput] = useState();
 
-  // Event handler for signin form submit - validate user details and redirect to the homepage
+  // Event handler for signup form submit - validate user details and redirect to the homepage
   async function handleFormSubmit(event) {
     try {
       event.preventDefault();
@@ -15,7 +15,7 @@ function signinPage() {
       console.log(usernameInput, passwordInput, fullNameInput);
 
       // Call API to log the user in
-      axios.post("/api/signin", {
+      axios.post("/api/signup", {
         name: usernameInput,
         password: passwordInput,
         fullName: fullNameInput,
@@ -33,7 +33,7 @@ function signinPage() {
   return (
     <div className="container">
       <div className="card-panel login-panel">
-        <form className="signin">
+        <form className="signup">
           <div className="row">
             <div className="input-field col s12 ">
               <h5 className="center-left ltc-heading">Create User Account</h5>
@@ -100,4 +100,4 @@ function signinPage() {
   );
 }
 
-export default signinPage;
+export default signupPage;

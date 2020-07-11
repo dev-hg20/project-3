@@ -14,8 +14,13 @@ function Nav() {
           <li>
             <Link to="/signup">Sign up</Link>
           </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <Link to="/logout">logout</Link>
+          </li>
         </ul>
-        login
       </div>
       <div className="nav-content">
         <span className="nav-title">Let's Taco'bout Food</span>

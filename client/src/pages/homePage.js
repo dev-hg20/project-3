@@ -1,6 +1,6 @@
 import React from "react";
 import LeftMenu from "../components/LeftMenu";
-import Card from "../components/Card";
+import Card from "../components/RestaurantCard";
 
 function homePage() {
   return (

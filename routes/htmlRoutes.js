@@ -13,12 +13,12 @@ let storyCategory = null;
  * once they are loaded since this is static data
  * @returns the story categories as objects
  */
-async function fetchCategories() {
-  if (storyCategory === null) {
-    storyCategory = await db.Category.findAll({ raw: true });
-  }
-  return storyCategory;
-}
+// async function fetchCategories() {
+//   if (storyCategory === null) {
+//     storyCategory = await db.Category.findAll({ raw: true });
+//   }
+//   return storyCategory;
+// }
 
 /**
  * Fetches the selected story from the database
@@ -40,8 +40,8 @@ router.get("/login", function (request, response) {
 });
 
 // Sign up route
-router.get("/signin", function (request, response) {
-  return response.render("signin", { currentUser: request.user });
+router.get("/signup", function (request, response) {
+  return response.render("signup", { currentUser: request.user });
 });
 
 // Edit Story route

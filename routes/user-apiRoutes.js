@@ -9,12 +9,13 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 // Otherwise the user will be sent an error
 router.post("/login", passport.authenticate("local"), function (req, res) {
   const userData = { ...req.user, password: undefined };
+  console.log(req.user.name);
   console.log(userData);
   res.json(userData);
 });
 
 //logging the user in
-router.post("/signin", function (req, res) {
+router.post("/signup", function (req, res) {
   db.User.create({
     name: req.body.name,
     fullName: req.body.fullName,
@@ -28,12 +29,23 @@ router.post("/signin", function (req, res) {
     });
 });
 
-//logging user out
+// logging user out
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
-// router.get("/logout", function (req, res) {
-//   req.logout();
-//   res.redirect("/");
-// });
+// GET data about user
+router.get("/user_data", function (req, res) {
+  if (req.user) {
+    res.json({
+      name: req.user.name,
+      fullName: req.user.fullName,
+      password: req.user.password,
+    });
+  }
+  res.json({});
+});
 
 //GET stories for the current user
 
