@@ -17,10 +17,6 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use("/api/stories", apiStoriesRoutes);
-app.use("/api", apiUserRoutes);
-app.use("/", htmlRoutes);
 
 // // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tacos", {
@@ -35,6 +31,11 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Add routes, both API and view
+app.use("/api/stories", apiStoriesRoutes);
+app.use("/api", apiUserRoutes);
+app.use("/", htmlRoutes);
 
 // Sync the database and log a message upon success
 db.sequelize.sync({}).then(function () {

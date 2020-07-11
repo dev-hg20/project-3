@@ -15,10 +15,10 @@ function App() {
         <Nav></Nav>
         <br></br>
         <Container>
-          <Route exact path="/" component={loginPage} />
+          <Route exact path="/login" component={loginPage} />
           <Route exact path="/signin" component={signinPage} />
           <Route exact path="/profile" component={profilePage} />
-          <Route exact path="/homepage" component={homePage} />
+          <Route exact path="/" component={homePage} />
         </Container>
       </Router>
     </div>

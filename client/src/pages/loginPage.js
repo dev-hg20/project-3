@@ -1,46 +1,36 @@
-import React from "react";
-import Modal from "../components/Modal";
-
+import React, { useState } from "react";
+import { withRouter, Link } from "react-router-dom";
 const axios = require("axios");
 
-function loginPage() {
-  //Make a request for a user
-  async function loginUser(userData) {
-    return axios({
-      method: "POST",
-      url: "/api/login",
-      data: userData,
+function loginPage({ history }) {
+  const [usernameInput, setUserNameInput] = useState();
+  const [passwordInput, setPasswordInput] = useState();
+
+  async function loginUser(usernameInput, passwordInput) {
+    return axios.post("/api/login", {
+      name: usernameInput,
+      password: passwordInput,
     });
   }
 
   // Event handler for login form submit - validate user details and redirect to the homepage
-  const { usernameInput } = "#name-input";
-  const { passwordInput } = "#password-input";
-
   async function handleFormSubmit(event) {
     try {
       event.preventDefault();
-      console.log("clicked2");
-
-      const userData = {
-        name: { usernameInput },
-        password: { passwordInput },
-      };
-      console.log({ usernameInput }, { passwordInput });
-
-      if (!userData.name || !userData.password) {
-        return "Please enter a user name and password!";
+      console.log(usernameInput, passwordInput); //reading name and password
+      if (!usernameInput || !passwordInput) {
+        return;
       }
-
-      // const result = await loginUser(userData);
-      // if (result) {
-      //   window.location.replace("/");
-      // }
+      const result = await loginUser(usernameInput, passwordInput);
+      console.log(result);
+      if (result) {
+        history.push("/");
+      }
     } catch (error) {
       if (error.status === 401) {
         return "Incorrect user name or password!";
       }
-      // handleError(error);
+      console.log(error);
     }
   }
 
@@ -60,6 +50,7 @@ function loginPage() {
                 id={usernameInput}
                 type="text"
                 className="validate"
+                onChange={(e) => setUserNameInput(e.target.value)}
               ></input>
               <label htmlFor="name-input">Name</label>
             </div>
@@ -71,6 +62,7 @@ function loginPage() {
                 id={passwordInput}
                 type="password"
                 className="validate"
+                onChange={(e) => setPasswordInput(e.target.value)}
               ></input>
               <label htmlFor="password-input">Password</label>
             </div>
@@ -88,7 +80,7 @@ function loginPage() {
           </div>
           <div className="row">
             <div className="input-field col s12 center-align">
-              <a href="/signin">Don't have an account? Sign up</a>
+              <Link to="/signin">Don't have an account? Sign up</Link>
             </div>
           </div>
         </form>
@@ -97,4 +89,4 @@ function loginPage() {
   );
 }
 
-export default loginPage;
+export default withRouter(loginPage);

@@ -4,7 +4,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 /** Error Message to be displayed if the main application page cannot be loaded up */
 const pageRenderErrorMessage = `<h1>Something Broke!</h1><br> <h4>Internal Server Error: </h4>
-                                Unable to load the Lets Talk Corona page!`;
+                                Guess we gotta taco-bout food some other time!`;
 
 let storyCategory = null;
 
@@ -41,7 +41,7 @@ router.get("/login", function (request, response) {
 
 // Sign up route
 router.get("/signin", function (request, response) {
-  return response.render("signup", { currentUser: request.user });
+  return response.render("signin", { currentUser: request.user });
 });
 
 // Edit Story route

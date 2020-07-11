@@ -13,11 +13,18 @@ function signinPage() {
       event.preventDefault();
       console.log("clicked");
       console.log(usernameInput, passwordInput, fullNameInput);
+
+      // Call API to log the user in
       axios.post("/api/signin", {
         name: usernameInput,
         password: passwordInput,
         fullName: fullNameInput,
       });
+
+      //If successful, we are redirected to the members page
+      if (passwordInput === passwordConfirmInput) {
+        window.location.replace("/");
+      }
     } catch (err) {
       console.log(err);
     }
