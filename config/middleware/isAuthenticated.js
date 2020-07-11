@@ -6,5 +6,6 @@ module.exports = function (req, res, next) {
   }
 
   // If the user isn't logged in, redirect them to the application homepage
-  return res.redirect("/");
+  // return res.redirect("/");
+  return res.status(401).json("Unauthorised access");
 };

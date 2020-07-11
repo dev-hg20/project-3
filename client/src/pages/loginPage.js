@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { withRouter, Link } from "react-router-dom";
+import { AuthContext } from "../components/Context/AuthContext";
 const axios = require("axios");
 
 function loginPage({ history }) {
   const [usernameInput, setUserNameInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
+  const { setUser } = useContext(AuthContext);
 
   async function loginUser(usernameInput, passwordInput) {
     return axios.post("/api/login", {
@@ -22,10 +24,8 @@ function loginPage({ history }) {
         return;
       }
       const result = await loginUser(usernameInput, passwordInput);
-      console.log(result);
-      if (result) {
-        history.push("/");
-      }
+      setUser(result.data);
+      history.push("/");
     } catch (error) {
       if (error.status === 401) {
         return "Incorrect user name or password!";

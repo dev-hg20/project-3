@@ -1,20 +1,21 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Nav() {
   return (
     <nav className="nav-extended">
       <div className="nav-wrapper">
         <ul className="right hide-on-med-and-down">
           <li>
-            <a href="">A link</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href=""> A second link</a>
+            <Link to="/login">Login</Link>
           </li>
           <li>
-            <a href="">A third link</a>
+            <Link to="/signup">Sign up</Link>
           </li>
         </ul>
+        login
       </div>
       <div className="nav-content">
         <span className="nav-title">Let's Taco'bout Food</span>
@@ -24,6 +25,3 @@ function Nav() {
 }
 
 export default Nav;
-// <nav>
-//   <div class="nav-wrapper"></div>
-// </nav>

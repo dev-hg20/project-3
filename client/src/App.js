@@ -7,21 +7,26 @@ import homePage from "./pages/homePage";
 import Container from "../src/components/Container";
 import Nav from "../src/components/Nav";
 import "./App.css";
+import AuthContextProvider from "./components/Context/AuthContext";
+import { PrivateRoute } from "./components/Routes/PrivateRoute";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Nav></Nav>
-        <br></br>
-        <Container>
-          <Route exact path="/login" component={loginPage} />
-          <Route exact path="/signin" component={signinPage} />
-          <Route exact path="/profile" component={profilePage} />
-          <Route exact path="/" component={homePage} />
-        </Container>
-      </Router>
-    </div>
+    <AuthContextProvider>
+      <div className="App">
+        <Router>
+          <Nav></Nav>
+          <br></br>
+          <Container>
+            <Route exact path="/login" component={loginPage} />
+            <Route exact path="/signin" component={signinPage} />
+            <Route exact path="/profile" component={profilePage} />
+            <PrivateRoute exact path="/homepage" component={homePage} />
+            <PrivateRoute exact path="/" component={homePage} />
+          </Container>
+        </Router>
+      </div>
+    </AuthContextProvider>
   );
 }
 

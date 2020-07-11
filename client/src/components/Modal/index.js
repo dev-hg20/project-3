@@ -1,15 +1,6 @@
 import React from "react";
 
 function Modals(props) {
-  // const { modalHeader } = ".modal-header";
-  // const { modalMEssage } = "#modal-message";
-
-  // function showMessage(message, title = "Lets Talk Corona!") {
-  //   { modalHeader }.text(title);
-  //   // $("#modal-message").html(message);
-  //   $("#search-modal").modal({ opacity: 0.2 });
-  //   $("#search-modal").modal("open");
-  // }
   const { mod } = props;
   return (
     <div id="search-modal" class="modal">
