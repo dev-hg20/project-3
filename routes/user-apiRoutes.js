@@ -8,7 +8,9 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
 router.post("/login", passport.authenticate("local"), function (req, res) {
-  res.json(req.user.id);
+  const userData = { ...req.user, password: undefined };
+  console.log(userData);
+  res.json(userData);
 });
 
 //logging the user in
