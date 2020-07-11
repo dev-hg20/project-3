@@ -1,13 +1,23 @@
 module.exports = function (sequelize, DataTypes) {
   const Restaurant = sequelize.define("Restaurant", {
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1],
       },
     },
-    body: {
+    mustHave: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1],
+    },
+    location: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1],
+    },
+    price: {
       type: DataTypes.TEXT,
       allowNull: false,
       len: [1],
@@ -15,13 +25,19 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Restaurant.associate = function (models) {
-    //a story belongs to an author and belongs to a category due to the foreign keys
+    //a restaurant belongs to a cuisine due to the foreign keys
 
-    Restaurant.belongsTo(models.User, {
+    // Restaurant.belongsTo(models.User, {
+    //   foreignKey: {
+    //     allowNull: false,
+    //   },
+    // });
+    Restaurant.hasMany(models.Review, {
       foreignKey: {
         allowNull: false,
       },
     });
+
     Restaurant.belongsTo(models.Cuisine, {
       foreignKey: {
         allowNull: false,

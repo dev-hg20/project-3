@@ -9,14 +9,14 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  // Cuisine.associate = function (models) {
-  //   //a story belongs to an author and belongs to a category due to the foreign keys
-  //   Cuisine.hasMany(models.Restaurant, {
-  //     foreignKey: {
-  //       allowNull: false,
-  //     },
-  //   });
-  // };
+  Cuisine.associate = function (models) {
+    //a story belongs to an author and belongs to a category due to the foreign keys
+    Cuisine.hasMany(models.Restaurant, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
   return Cuisine;
 };
