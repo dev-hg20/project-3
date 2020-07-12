@@ -48,19 +48,19 @@ router.get("/user_data", function (req, res) {
   res.json({});
 });
 
-//GET stories for the current user
-// router.get("/user/stories", isAuthenticated, async function (req, res) {
-//   try {
-//     const dbStory = await db.Story.findAll({
-//       where: {
-//         UserId: req.user.id,
-//       },
-//       order: [["updatedAt", "DESC"]],
-//     });
-//     res.json(dbStory);
-//   } catch (err) {
-//     res.status(500).send(err.message);
-//   }
-// });
+// GET ALL restaurants for the current user
+router.get("/user/restaurants", isAuthenticated, async function (req, res) {
+  try {
+    const dbRestaurant = await db.Restaurant.findAll({
+      where: {
+        UserId: req.user.id,
+      },
+      order: [["updatedAt", "DESC"]],
+    });
+    res.json(dbRestaurant);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
 
 module.exports = router;

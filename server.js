@@ -5,6 +5,7 @@ const db = require("./models");
 const htmlRoutes = require("./routes/htmlRoutes");
 const apiUserRoutes = require("./routes/user-apiRoutes");
 const apiStoriesRoutes = require("./routes/story-apiRoutes");
+const cors = require("cors");
 
 // Set up port to work with Heroku as well
 const app = express();
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV === "production") {
 //   useNewUrlParser: true,
 //   useCreateIndex: true,
 // });
+app.use(cors());
 
 // Configure express to use sessions and passport middleware for authentication
 app.use(

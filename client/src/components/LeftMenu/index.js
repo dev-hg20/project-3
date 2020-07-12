@@ -4,17 +4,17 @@ function LeftMenu() {
   return (
     <div>
       <div>
-        <ul class="collection">
-          <a href="#!" class="collection-item">
+        <ul className="collection">
+          <a href="#!" className="collection-item">
             Alvin
           </a>
-          <a href="#!" class="collection-item active">
+          <a href="#!" className="collection-item active">
             Alvin
           </a>
-          <a href="#!" class="collection-item">
+          <a href="#!" className="collection-item">
             Alvin
           </a>
-          <a href="#!" class="collection-item">
+          <a href="#!" className="collection-item">
             Alvin
           </a>
         </ul>

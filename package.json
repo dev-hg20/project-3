@@ -25,6 +25,7 @@
     "axios": "^0.18.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "express-session": "^1.17.1",
     "fontsource-roboto": "^2.1.4",

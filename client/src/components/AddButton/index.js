@@ -3,8 +3,8 @@ import React from "react";
 function AddButton() {
   return (
     <div>
-      <a class="btn-floating halfway-fab waves-effect waves-light red">
-        <i class="material-icons">add</i>
+      <a className="btn-floating halfway-fab waves-effect waves-light red">
+        <i className="material-icons">add</i>
       </a>
     </div>
   );

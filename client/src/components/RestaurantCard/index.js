@@ -7,7 +7,7 @@ function Cards(props) {
       <div className="col s12 m6">
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
-            <span className="card-title">{props.name}RESTAURANT</span>
+            <span className="card-title">RESTAURANT{props.name}</span>
             <ul>
               <li>Name: {props.name}</li>
               <li>Must Try: {props.mustHave}</li>
