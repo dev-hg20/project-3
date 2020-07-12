@@ -9,7 +9,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 // Otherwise the user will be sent an error
 router.post("/login", passport.authenticate("local"), function (req, res) {
   const userData = { ...req.user, password: undefined };
-  console.log(req.user.fullName);
+  console.log(req.user.id);
   console.log(userData);
   res.json(userData);
 });
@@ -36,10 +36,10 @@ router.get("/logout", function (req, res) {
 });
 
 // GET data about user
-router.get("/user_data", function (req, res) {
+router.get("", function (req, res) {
   if (req.user) {
     const userData = res.json({
-      email: req.body.email,
+      email: req.user.email,
       fullName: req.user.fullName,
       password: req.user.password,
     });
@@ -51,12 +51,14 @@ router.get("/user_data", function (req, res) {
 // GET ALL restaurants for the current user
 router.get("/user/restaurants", isAuthenticated, async function (req, res) {
   try {
+    const userData = { ...req.user, password: undefined };
     const dbRestaurant = await db.Restaurant.findAll({
       where: {
         UserId: req.user.id,
       },
       order: [["updatedAt", "DESC"]],
     });
+    console.log(userData);
     res.json(dbRestaurant);
   } catch (err) {
     res.status(500).send(err.message);

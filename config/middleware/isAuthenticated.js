@@ -5,6 +5,7 @@ module.exports = async function (req, res, next) {
   const {
     body: { userId },
   } = req;
+
   const user = await db.User.findOne({ id: userId });
   if (!user) return res.status(401).json("Unauthorised access");
   // If the user is logged in, continue with the request to the restricted route

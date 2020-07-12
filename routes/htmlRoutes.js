@@ -24,10 +24,10 @@ let storyCategory = null;
  * Fetches the selected story from the database
  * @returns the story as an object
  */
-async function fetchStory(storyId, userId) {
+async function fetchRestaurant(RestaurantId, UserId) {
   return await db.Story.findOne({
     where: {
-      id: storyId,
+      RestaurantId: restaurantId,
       UserId: userId,
     },
     raw: true,

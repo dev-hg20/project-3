@@ -8,7 +8,7 @@ function homePage() {
   const { user } = useContext(AuthContext);
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8080/api/user/restaurants")
+    fetch("http://localhost:8080/api/restaurant")
       .then((res) => res.json())
       .then((data) => {
         setRestaurants(data);

@@ -5,13 +5,13 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 //GET all the restaurants
 router.get("/", async function (req, res) {
   try {
-    const query = {};
-    const dbStory = await db.Story.findAll({
-      where: query,
+    // const query = {};
+    const dbRestaurant = await db.Restaurant.findAll({
+      // where: query,
       include: [db.User],
       order: [["updatedAt", "DESC"]],
     });
-    res.json(dbStory);
+    res.json(dbRestaurant);
   } catch (err) {
     res.status(500).send(err.message);
   }
