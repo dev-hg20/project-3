@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import ProfileCard from "../components/profileCard";
 import Card from "../components/RestaurantCard";
+import AddForm from "../components/AddForm";
 import { AuthContext } from "../components/Context/AuthContext";
 
 function profilePage() {
@@ -23,6 +24,8 @@ function profilePage() {
             <ProfileCard fullname={user.dataValues.fullName} />
           </div>
           <h5 class="user-profile-title">My Favourites</h5>
+          <AddForm />
+
           <div>
             {restaurants.map((restaurant) => {
               return (

@@ -17,17 +17,29 @@ router.get("/", async function (req, res) {
   }
 });
 
-//GET all the restaurants for a Cuisine
-router.get("/category/:id", async function (req, res) {
+//GET all the restaurants for all Cuisine
+router.get("/cuisine", async function (req, res) {
   try {
-    const dbStory = await db.Story.findAll({
+    const dbRestaurant = await db.Restaurant.findAll({
+      include: [db.Cuisine],
+    });
+    res.json(dbRestaurant);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
+//GET all the restaurants for a Cuisine
+router.get("/cuisine/:id", async function (req, res) {
+  try {
+    const dbRestaurant = await db.Restaurant.findAll({
       where: {
-        CategoryId: req.params.id,
+        CuisineId: req.params.id,
       },
       order: [["updatedAt", "DESC"]],
-      include: [db.User],
+      include: [db.Cuisine],
     });
-    res.json(dbStory);
+    res.json(dbRestaurant);
   } catch (err) {
     res.status(500).send(err.message);
   }

@@ -12,6 +12,7 @@ function Cards(props) {
               <li>Must Try: {props.mustHave}</li>
               <li>Location: {props.location}</li>
               <li>Price: {props.price}</li>
+              <li>Cuisine:</li>
             </ul>
             <AddButton></AddButton>
           </div>
