@@ -8,7 +8,7 @@ function profilePage() {
 
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8080/api/user/restaurants")
+    fetch(`http://localhost:8080/api/user/restaurants/${user.dataValues.id}`)
       .then((res) => res.json())
       .then((data) => {
         setRestaurants(data);

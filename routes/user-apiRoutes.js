@@ -49,16 +49,14 @@ router.get("", function (req, res) {
 });
 
 // GET ALL restaurants for the current user
-router.get("/user/restaurants", isAuthenticated, async function (req, res) {
+router.get("/user/restaurants/:id", isAuthenticated, async function (req, res) {
   try {
-    const userData = { ...req.user, password: undefined };
     const dbRestaurant = await db.Restaurant.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.params.id,
       },
       order: [["updatedAt", "DESC"]],
     });
-    console.log(userData);
     res.json(dbRestaurant);
   } catch (err) {
     res.status(500).send(err.message);
