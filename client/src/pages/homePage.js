@@ -25,9 +25,16 @@ function homePage() {
           </div>
         </div>
         <div className="col s8">
-          {restaurants.map((item) => (
-            <Card name={user.dataValues.name}></Card>
-          ))}
+          {restaurants.map((restaurant) => {
+            return (
+              <Card
+                name={restaurant.name}
+                mustHave={restaurant.mustHave}
+                location={restaurant.location}
+                price={restaurant.price}
+              ></Card>
+            );
+          })}
         </div>
       </div>
     </div>

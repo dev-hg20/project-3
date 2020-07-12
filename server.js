@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
 //   useNewUrlParser: true,
 //   useCreateIndex: true,
 // });
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000" }));
 
 // Configure express to use sessions and passport middleware for authentication
 app.use(
