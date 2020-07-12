@@ -49,7 +49,6 @@ router.get("/user_data", function (req, res) {
 });
 
 //GET stories for the current user
-
 // router.get("/user/stories", isAuthenticated, async function (req, res) {
 //   try {
 //     const dbStory = await db.Story.findAll({
@@ -63,20 +62,3 @@ router.get("/user_data", function (req, res) {
 //     res.status(500).send(err.message);
 //   }
 // });
-
-// Route for getting some data about our user to be used client side
-router.get("/api/user_data", function (req, res) {
-  if (!req.user) {
-    // The user is not logged in, send back an empty object
-    res.json({});
-  } else {
-    // Otherwise send back the user's email and id
-    // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      name: req.body.name,
-      fullName: req.body.fullName,
-      password: req.body.password,
-    });
-  }
-});
-module.exports = router;

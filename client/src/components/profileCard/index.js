@@ -1,4 +1,5 @@
 import React from "react";
+import image from "../Asset/user_avatar.png";
 
 function ProfileCard(props) {
   return (
@@ -6,7 +7,7 @@ function ProfileCard(props) {
       <div class="card">
         <div class="card-content s12 center-align">
           <img
-            src="/assets/images/user_avatar.png"
+            src={image}
             alt="user avatar"
             class="circle responsive-img avatar-img"
           ></img>
