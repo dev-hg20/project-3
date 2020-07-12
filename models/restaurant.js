@@ -27,12 +27,7 @@ module.exports = function (sequelize, DataTypes) {
   Restaurant.associate = function (models) {
     //a restaurant belongs to a cuisine due to the foreign keys
 
-    // Restaurant.belongsTo(models.User, {
-    //   foreignKey: {
-    //     allowNull: false,
-    //   },
-    // });
-    Restaurant.hasMany(models.Review, {
+    Restaurant.belongsTo(models.User, {
       foreignKey: {
         allowNull: false,
       },

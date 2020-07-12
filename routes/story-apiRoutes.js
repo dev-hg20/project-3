@@ -2,7 +2,7 @@ const router = require("express").Router();
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-//GET all the stories
+//GET all the restaurants
 router.get("/", async function (req, res) {
   try {
     const query = {};
@@ -17,7 +17,7 @@ router.get("/", async function (req, res) {
   }
 });
 
-//GET all the stories for a Category
+//GET all the restaurants for a Cuisine
 router.get("/category/:id", async function (req, res) {
   try {
     const dbStory = await db.Story.findAll({
@@ -33,7 +33,7 @@ router.get("/category/:id", async function (req, res) {
   }
 });
 
-//POST for saving a new post
+//POST for saving a new REstaurant
 router.post("/", isAuthenticated, async function (req, res) {
   try {
     const dbStory = await db.Story.create(req.body);

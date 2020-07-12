@@ -2,7 +2,7 @@ import React, { useState } from "react";
 const axios = require("axios");
 
 function signupPage() {
-  const [usernameInput, setUserNameInput] = useState();
+  const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
   const [fullNameInput, setFullNameInput] = useState();
   const [passwordConfirmInput, setPasswordConfirmInput] = useState();
@@ -12,11 +12,11 @@ function signupPage() {
     try {
       event.preventDefault();
       console.log("clicked");
-      console.log(usernameInput, passwordInput, fullNameInput);
+      console.log(emailInput, passwordInput, fullNameInput);
 
       // Call API to log the user in
       axios.post("/api/signup", {
-        name: usernameInput,
+        email: emailInput,
         password: passwordInput,
         fullName: fullNameInput,
       });
@@ -53,12 +53,12 @@ function signupPage() {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                value={usernameInput}
+                value={emailInput}
                 type="text"
                 className="validate"
-                onChange={(e) => setUserNameInput(e.target.value)}
+                onChange={(e) => setEmailInput(e.target.value)}
               ></input>
-              <label htmlFor="name-input">Login / User Name</label>
+              <label htmlFor="name-input">Email</label>
             </div>
           </div>
           <div className="row">

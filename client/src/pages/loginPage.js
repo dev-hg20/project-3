@@ -4,13 +4,13 @@ import { AuthContext } from "../components/Context/AuthContext";
 const axios = require("axios");
 
 function loginPage({ history }) {
-  const [usernameInput, setUserNameInput] = useState();
+  const [emailInput, setEmailInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
   const { setUser } = useContext(AuthContext);
 
-  async function loginUser(usernameInput, passwordInput) {
+  async function loginUser(emailInput, passwordInput) {
     return axios.post("/api/login", {
-      name: usernameInput,
+      email: emailInput,
       password: passwordInput,
     });
   }
@@ -19,10 +19,10 @@ function loginPage({ history }) {
   async function handleFormSubmit(event) {
     try {
       event.preventDefault();
-      if (!usernameInput || !passwordInput) {
+      if (!emailInput || !passwordInput) {
         return;
       }
-      const result = await loginUser(usernameInput, passwordInput);
+      const result = await loginUser(emailInput, passwordInput);
       setUser(result.data);
       history.push("/");
     } catch (error) {
@@ -45,13 +45,13 @@ function loginPage({ history }) {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                placeholder="User Name"
-                id={usernameInput}
+                placeholder="Email"
+                id={emailInput}
                 type="text"
                 className="validate"
-                onChange={(e) => setUserNameInput(e.target.value)}
+                onChange={(e) => setEmailInput(e.target.value)}
               ></input>
-              <label htmlFor="name-input">Name</label>
+              <label htmlFor="name-input">Email</label>
             </div>
           </div>
           <div className="row">

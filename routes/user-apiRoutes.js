@@ -9,7 +9,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 // Otherwise the user will be sent an error
 router.post("/login", passport.authenticate("local"), function (req, res) {
   const userData = { ...req.user, password: undefined };
-  console.log(req.user.name);
+  console.log(req.user.fullName);
   console.log(userData);
   res.json(userData);
 });
@@ -17,7 +17,7 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 //logging the user in
 router.post("/signup", function (req, res) {
   db.User.create({
-    name: req.body.name,
+    email: req.body.email,
     fullName: req.body.fullName,
     password: req.body.password,
   })
@@ -39,7 +39,7 @@ router.get("/logout", function (req, res) {
 router.get("/user_data", function (req, res) {
   if (req.user) {
     const userData = res.json({
-      name: req.user.name,
+      email: req.body.email,
       fullName: req.user.fullName,
       password: req.user.password,
     });
@@ -62,3 +62,5 @@ router.get("/user_data", function (req, res) {
 //     res.status(500).send(err.message);
 //   }
 // });
+
+module.exports = router;

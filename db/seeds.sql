@@ -1,14 +1,37 @@
-USE viral_db;
+USE taco_db;
 
-INSERT INTO Categories (name) VALUES ("Everyday Heroes"),("Quarantine Quotes"),("Healing Space"),("Newsworthy");
 
-INSERT INTO `Users`(`id`,`name`,`fullName`,`password`)
-VALUES
-('1', 'dprice', 'Dylan Price', '$2a$10$sgjuiLpGaMbth5DyqBSv9ekqBMWq9PSxaybA/PYePnJirXbcbJFV6'),
-('2', 'Lharrison', 'Lily Harrison', '$2a$10$zZx32mLkZ1d85AayFjudueX7dBq045LtUUSfpNGG8eI12eplyl4h2'),
-('3', 'Tlee', 'Tom Lee', '$2a$10$5C2SB9soqRkqnWK0KUx2E.CsrDx.Mf40.pxRNMTrlUj7w2rjXv/j.'),
-('4', 'gvee', 'George Vee', '$2a$10$//pHbEHjMk29vV8lPrpiAOKjkuplYmVpl/bAWSs1NLNQP2ItMSclS');
+INSERT INTO Cuisines (name) VALUES ("Italian");
+INSERT INTO Cuisines (name) VALUES ("Chinese");
+INSERT INTO Cuisines (name) VALUES ("Mongolian");
+INSERT INTO Cuisines (name) VALUES ("Argentinian");
 
-INSERT INTO `Stories` (`id`, `title`, `body`, `createdAt`, `updatedAt`, `CategoryId`, `UserId`)
-VALUES
-('3', 'Thank You', 'Thanks to all essential workers for all your great work in caring for everyone in our community. You are heroes!', '2020-05-21 09:44:08', '2020-05-21 09:44:08', '1', '2'),
+-- SELECT * FROM Cuisines;
+
+INSERT INTO Users (email, fullName, password) VALUES ("test","test","$2a$10$OLoLgy1vJFAZBbxUAPqVJuYvTxTwPYIi1Sxk4rb.PKAYgWqahTstq");
+INSERT INTO Users (email, fullName, password) VALUES ("haylie","haylie","$2a$10$OLoLgy1vJFAZBbxUAPqVJuYvTxTwPYIi1Sxk4rb.PKAYgWqahTstq");
+INSERT INTO Users (email, fullName, password) VALUES ("wagner","wagner","$2a$10$OLoLgy1vJFAZBbxUAPqVJuYvTxTwPYIi1Sxk4rb.PKAYgWqahTstq");
+
+-- SELECT * FROM Users;
+
+INSERT INTO Restaurants (name, mustHave,location,price,CuisineId,UserId) VALUES ("Marameo", "CacioePepe","CBD", "$","1","1");
+INSERT INTO Restaurants (name, mustHave,location,price,CuisineId,UserId) VALUES ("Dumplings", "Dumplings","CBD", "$$","2","1");
+INSERT INTO Restaurants (name, mustHave,location,price,CuisineId,UserId) VALUES ("Sofia", "Spaghetti","CBD", "$$$","3","1");
+
+-- SELECT * FROM Restaurants;
+
+INSERT INTO Favourites (RestaurantId,UserId) VALUES ("1","1");
+INSERT INTO Favourites (RestaurantId,UserId) VALUES ("2","1");
+INSERT INTO Favourites (RestaurantId,UserId) VALUES ("3","1");
+
+-- SELECT * FROM Favourites;
+
+INSERT INTO Reviews (rating, RestaurantId,UserId) VALUES ("1","1","1");
+INSERT INTO Reviews (rating, RestaurantId,UserId) VALUES ("1","2","1");
+INSERT INTO Reviews (rating, RestaurantId,UserId) VALUES ("1","3","1");
+
+-- SELECT * FROM Reviews;
+
+
+
+
