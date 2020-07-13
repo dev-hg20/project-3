@@ -4,14 +4,15 @@ import { TextField } from "@material-ui/core";
 function TextFields() {
   return (
     <TextField
-      variant="outlined"
+      // variant="outlined"
       margin="normal"
+      type="text"
       required
       fullWidth
-      id="email"
-      label="Email Address"
-      name="email"
-      autoComplete="email"
+      id=""
+      label=""
+      name=""
+      autoComplete=""
       autoFocus
     />
   );

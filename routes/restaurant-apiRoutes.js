@@ -45,11 +45,17 @@ router.get("/cuisine/:id", async function (req, res) {
   }
 });
 
-//POST for saving a new REstaurant
+//POST for saving a new Restaurant
 router.post("/", isAuthenticated, async function (req, res) {
   try {
-    const dbStory = await db.Story.create(req.body);
-    res.json(dbStory);
+    const dbRestaurant = await db.Restaurant.create({
+      name: req.body.name,
+      mustHave: req.body.mustHave,
+      location: req.body.location,
+      price: req.body.price,
+    });
+    res.json(dbRestaurant);
+    console.log(dbRestaurant);
   } catch (err) {
     res.status(500).send(err.message);
   }

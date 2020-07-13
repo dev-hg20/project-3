@@ -1,5 +1,5 @@
 import React from "react";
-import AddButton from "../AddButton";
+// import TextField from "../components/TextField";
 
 function AddForm() {
   return (
@@ -40,12 +40,6 @@ function AddForm() {
             </span>
           </div>
           <br></br>
-          <button
-            className="btn waves-effect waves-light rounded"
-            type="submit"
-          >
-            Add A Restaurant
-          </button>
         </div>
       </form>
     </div>

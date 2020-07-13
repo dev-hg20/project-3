@@ -18,7 +18,7 @@ function homePage() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/restaurant/cuisine")
+    fetch("http://localhost:8080/api/restaurant/category")
       .then((res) => res.json())
       .then((data) => {
         setCuisines(data);
@@ -32,7 +32,7 @@ function homePage() {
           <div>
             <ProfileCard fullname={user.dataValues.fullName}></ProfileCard>
             {cuisines.map((cuisine) => {
-              return <LeftMenu name={cuisine.Cuisine.name} />;
+              return <LeftMenu name={cuisine.name} />;
             })}
           </div>
         </div>

@@ -5,6 +5,7 @@ const db = require("./models");
 const htmlRoutes = require("./routes/htmlRoutes");
 const apiUserRoutes = require("./routes/user-apiRoutes");
 const apiRestaurantRoutes = require("./routes/restaurant-apiRoutes");
+const apiCuisineRoutes = require("./routes/cuisine-apiRoutes");
 const cors = require("cors");
 
 // Set up port to work with Heroku as well
@@ -35,6 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes, both API and view
+app.use("/api/restaurant/category", apiCuisineRoutes);
 app.use("/api/restaurant", apiRestaurantRoutes);
 app.use("/api", apiUserRoutes);
 app.use("/", htmlRoutes);
