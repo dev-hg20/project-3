@@ -22,6 +22,7 @@ function profilePage() {
   const [locationInput, setLocationInput] = useState();
   const [priceInput, setPriceInput] = useState();
   const [cuisines, setCuisines] = useState([]);
+  const [cuisineId, setCuisineId] = useState([]);
 
   //For rendering restaurant cards
   useEffect(() => {
@@ -38,7 +39,7 @@ function profilePage() {
       .then((res) => res.json())
       .then((data) => {
         setCuisines(data);
-        console.log(data);
+        console.log("effect");
       });
   }, []);
 
@@ -46,27 +47,40 @@ function profilePage() {
   async function handleFormSubmit(event) {
     try {
       event.preventDefault();
+      // console.log(user.dataValues.id);
+
+      console.log(cuisineId);
+
       //call to post restaurant info
       axios.post("/api/restaurant", {
         name: restaurantNameInput,
         mustHave: mustTryInput,
         location: locationInput,
         price: priceInput,
+        CuisineId: cuisineId,
+        UserId: user.dataValues.id,
       });
-      console.log(restaurantNameInput, mustTryInput, locationInput, priceInput);
+      console.log(
+        restaurantNameInput,
+        mustTryInput,
+        locationInput,
+        priceInput,
+        cuisineId,
+        user.dataValues.id
+      );
     } catch (err) {
       console.log(err);
     }
   }
 
   return (
-    <div class="container">
+    <div className="container">
       <div className="row">
         <div className="col s12">
-          <div class="blue-grey-text left-align hidden user-profile-image">
+          <div className="blue-grey-text left-align hidden user-profile-image">
             <ProfileCard fullname={user.dataValues.fullName} />
           </div>
-          <h5 class="user-profile-title">My Favourites</h5>
+          <h5 className="user-profile-title">My Favourites</h5>
           <div>
             <form className="col s12">
               <div className="row">
@@ -134,24 +148,27 @@ function profilePage() {
                       name: "cuisine",
                       id: "outlined-age-native-simple",
                     }}
+                    onChange={(e) => {
+                      setCuisineId(e.target.value);
+                    }}
                   >
                     <option aria-label="None" value="" />
                     {cuisines.map((cuisine) => {
-                      return <option aria-label="None">{cuisine.name}</option>;
+                      return <option value={cuisine.id}>{cuisine.name}</option>;
                     })}
                   </Select>
                 </FormControl>
 
                 <br></br>
               </div>
+              <button
+                className="btn waves-effect waves-light rounded"
+                type="submit"
+                onClick={handleFormSubmit}
+              >
+                ADD A RESTAURANT
+              </button>
             </form>
-            <button
-              className="btn waves-effect waves-light rounded"
-              type="submit"
-              onClick={handleFormSubmit}
-            >
-              ADD A RESTAURANT
-            </button>
           </div>
 
           <div>

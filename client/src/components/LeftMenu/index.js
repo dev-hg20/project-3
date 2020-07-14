@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Link } from "react";
 
 function LeftMenu(props) {
   return (
     <div>
       <ul className="collection">
-        <a href="#!" className="collection-item">
+        <Link href="#!" className="collection-item">
           {props.name}
-        </a>
+        </Link>
       </ul>
     </div>
   );

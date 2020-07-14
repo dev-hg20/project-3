@@ -53,6 +53,8 @@ router.post("/", isAuthenticated, async function (req, res) {
       mustHave: req.body.mustHave,
       location: req.body.location,
       price: req.body.price,
+      CuisineId: req.body.UserId,
+      UserId: req.body.UserId,
     });
     res.json(dbRestaurant);
     console.log(dbRestaurant);

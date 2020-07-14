@@ -25,6 +25,14 @@ function homePage() {
       });
   }, []);
 
+  async function handleClick(event) {
+    try {
+      event.preventDefault();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -32,7 +40,7 @@ function homePage() {
           <div>
             <ProfileCard fullname={user.dataValues.fullName}></ProfileCard>
             {cuisines.map((cuisine) => {
-              return <LeftMenu name={cuisine.name} />;
+              return <LeftMenu name={cuisine.name} onClick={handleClick} />;
             })}
           </div>
         </div>
