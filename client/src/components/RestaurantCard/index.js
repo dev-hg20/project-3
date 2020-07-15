@@ -1,5 +1,5 @@
 import React from "react";
-// import Rating from "@material-ui/lab/Rating";
+import Rating from "@material-ui/lab/Rating";
 import AddButton from "../AddButton";
 
 function Cards(props) {
@@ -14,7 +14,7 @@ function Cards(props) {
               <li>Location: {props.location}</li>
               <li>Price: {props.price}</li>
               <li>
-                Rating:
+                Rating:{props.averageRating}
                 {/* <Rating name="simple-controlled" value={props.averageRating} /> */}
               </li>
             </ul>
