@@ -3,6 +3,7 @@ import { FormControl, InputLabel, Select } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ProfileCard from "../components/profileCard";
 import Card from "../components/RestaurantCard";
+import Quote from "../components/Quote";
 import { AuthContext } from "../components/Context/AuthContext";
 const axios = require("axios");
 
@@ -48,7 +49,6 @@ function profilePage() {
     try {
       event.preventDefault();
       // console.log(user.dataValues.id);
-
       console.log(cuisineId);
 
       //call to post restaurant info
@@ -75,11 +75,23 @@ function profilePage() {
 
   return (
     <div className="container">
+      <div className="row s12">
+        <div className="col s4 center-align">
+          <div className="blue-grey-text left-align hidden user-profile-image">
+            <ProfileCard
+              width="25"
+              height="25"
+              fullname={user.dataValues.fullName}
+            />
+          </div>
+        </div>
+        <div className="col s8 center-align">
+          <Quote></Quote>
+        </div>
+      </div>
+
       <div className="row">
         <div className="col s12">
-          <div className="blue-grey-text left-align hidden user-profile-image">
-            <ProfileCard fullname={user.dataValues.fullName} />
-          </div>
           <h5 className="user-profile-title">My Favourites</h5>
           <div>
             <form className="col s12">
@@ -179,6 +191,7 @@ function profilePage() {
                   mustHave={restaurant.mustHave}
                   location={restaurant.location}
                   price={restaurant.price}
+                  averageRating={restaurant.averageRating}
                 ></Card>
               );
             })}

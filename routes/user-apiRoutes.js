@@ -9,8 +9,8 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 // Otherwise the user will be sent an error
 router.post("/login", passport.authenticate("local"), function (req, res) {
   const userData = { ...req.user, password: undefined };
-  console.log(req.user.id);
-  console.log(userData);
+  // console.log(req.user.id);
+  // console.log(userData);
   res.json(userData);
 });
 
@@ -22,7 +22,7 @@ router.post("/signup", function (req, res) {
     password: req.body.password,
   })
     .then(function () {
-      res.redirect(307, "/api/login");
+      res.redirect(307, "/");
     })
     .catch(function (err) {
       res.status(401).json(err);
@@ -36,17 +36,17 @@ router.get("/logout", function (req, res) {
 });
 
 // GET data about user
-router.get("", function (req, res) {
-  if (req.user) {
-    const userData = res.json({
-      email: req.user.email,
-      fullName: req.user.fullName,
-      password: req.user.password,
-    });
-    res.json({ userData });
-  }
-  res.json({});
-});
+// router.get("/user_data", function (req, res) {
+//   if (req.user) {
+//     const userData = res.json({
+//       email: req.user.email,
+//       fullName: req.user.fullName,
+//       password: req.user.password,
+//     });
+//     res.json({ userData });
+//   }
+//   res.json({});
+// });
 
 // GET ALL restaurants for the current user
 router.get("/user/restaurants/:id", isAuthenticated, async function (req, res) {

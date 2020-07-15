@@ -1,12 +1,13 @@
-import React, { Link } from "react";
+import React from "react";
+// import { Link } from "@material-ui/core";
 
 function LeftMenu(props) {
   return (
     <div>
       <ul className="collection">
-        <Link href="#!" className="collection-item">
+        <a className="collection-item" onClick={props.onClick} id={props.id}>
           {props.name}
-        </Link>
+        </a>
       </ul>
     </div>
   );

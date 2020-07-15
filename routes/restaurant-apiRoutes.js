@@ -6,24 +6,21 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 router.get("/", async function (req, res) {
   try {
     // const query = {};
-    const dbRestaurant = await db.Restaurant.findAll({
-      // where: query,
-      include: [db.User],
-      order: [["updatedAt", "DESC"]],
-    });
-    res.json(dbRestaurant);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
-
-//GET all the restaurants for all Cuisine
-router.get("/cuisine", async function (req, res) {
-  try {
-    const dbRestaurant = await db.Restaurant.findAll({
-      include: [db.Cuisine],
-    });
-    res.json(dbRestaurant);
+    const dbRestaurant = await db.sequelize.query(`
+      select
+        restaurant.*,
+        coalesce(avg(review.Rating), 1) as averageRating
+      from Restaurants restaurant
+      left join Reviews review on review.RestaurantId = restaurant.Id
+      group by restaurant.Id, restaurant.Name, restaurant.mustHave, restaurant.location, restaurant.price, restaurant.CuisineId, restaurant.CreatedAt, restaurant.UpdatedAt
+      order by restaurant.UpdatedAt DESC
+    `);
+    // await db.Restaurant.findAll({
+    //   // where: query,
+    //   include: [db.User],
+    //   order: [["updatedAt", "DESC"]],
+    // });
+    res.json(dbRestaurant[0]);
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -57,7 +54,6 @@ router.post("/", isAuthenticated, async function (req, res) {
       UserId: req.body.UserId,
     });
     res.json(dbRestaurant);
-    console.log(dbRestaurant);
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -92,3 +88,15 @@ router.delete("/:id", isAuthenticated, async function (req, res) {
 });
 
 module.exports = router;
+
+//GET all the restaurants for all Cuisine
+// router.get("/cuisine", async function (req, res) {
+//   try {
+//     const dbRestaurant = await db.Restaurant.findAll({
+//       include: [db.Cuisine],
+//     });
+//     res.json(dbRestaurant);
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// });
