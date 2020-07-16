@@ -22,7 +22,7 @@ function Nav() {
           </li>
           <li>
             <Link to="/logout" onClick={(e) => setUser(false)}>
-              logout
+              Logout
             </Link>
           </li>
         </ul>
