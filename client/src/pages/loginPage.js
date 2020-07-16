@@ -45,7 +45,7 @@ function loginPage({ history }) {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                placeholder="Email"
+                // placeholder="Email"
                 id={emailInput}
                 type="text"
                 className="validate"
@@ -57,7 +57,7 @@ function loginPage({ history }) {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                placeholder="Password"
+                // placeholder="Password"
                 id={passwordInput}
                 type="password"
                 className="validate"

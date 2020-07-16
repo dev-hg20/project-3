@@ -40,7 +40,6 @@ function profilePage() {
       .then((res) => res.json())
       .then((data) => {
         setCuisines(data);
-        console.log("effect");
       });
   }, []);
 
@@ -48,9 +47,6 @@ function profilePage() {
   async function handleFormSubmit(event) {
     try {
       event.preventDefault();
-      // console.log(user.dataValues.id);
-      console.log(cuisineId);
-
       //call to post restaurant info
       axios.post("/api/restaurant", {
         name: restaurantNameInput,
@@ -78,6 +74,7 @@ function profilePage() {
       <div className="row s12">
         <div className="col s4 center-align">
           <div className="blue-grey-text left-align hidden user-profile-image">
+            {/* render profile cards */}
             <ProfileCard
               width="25"
               height="25"
@@ -86,6 +83,7 @@ function profilePage() {
           </div>
         </div>
         <div className="col s8 center-align">
+          {/* render quote */}
           <Quote></Quote>
         </div>
       </div>
@@ -94,6 +92,7 @@ function profilePage() {
         <div className="col s12">
           <h5 className="user-profile-title">My Favourites</h5>
           <div>
+            {/* render add restaurant form */}
             <form className="col s12">
               <div className="row">
                 <div className="input-field col s6">

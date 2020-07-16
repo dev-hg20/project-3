@@ -21,11 +21,11 @@ router.post("/signup", function (req, res) {
     fullName: req.body.fullName,
     password: req.body.password,
   })
-    .then(function () {
-      res.redirect(307, "/");
+    .then(function (user) {
+      res.json(user);
     })
     .catch(function (err) {
-      res.status(401).json(err);
+      res.status(404).json(err);
     });
 });
 

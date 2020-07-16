@@ -1,30 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { withRouter } from "react-router-dom";
+import { AuthContext } from "../components/Context/AuthContext";
+
 const axios = require("axios");
 
-function signupPage() {
-  const [emailInput, setEmailInput] = useState();
-  const [passwordInput, setPasswordInput] = useState();
-  const [fullNameInput, setFullNameInput] = useState();
-  const [passwordConfirmInput, setPasswordConfirmInput] = useState();
+function signupPage({ history }) {
+  const { setUser } = useContext(AuthContext);
+  const [formState, setFormState] = useState({});
+
+  const handleInputChange = ({ target: { name, value } }) =>
+    setFormState({ ...formState, [name]: value });
 
   // Event handler for signup form submit - validate user details and redirect to the homepage
   async function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log("sucess");
     try {
-      event.preventDefault();
-      console.log("clicked");
-      console.log(emailInput, passwordInput, fullNameInput);
-
+      if (formState.password !== formState.confirmPassword) return;
       // Call API to log the user in
-      axios.post("/api/signup", {
-        email: emailInput,
-        password: passwordInput,
-        fullName: fullNameInput,
+      const response = await axios.post("/api/signup", {
+        email: formState.email,
+        password: formState.password,
+        fullName: formState.fullName,
       });
+      console.log(response.data);
+      setUser({ dataValues: response.data });
+      history.push("/");
 
       //If successful, we are redirected to the members page
-      if (passwordInput === passwordConfirmInput) {
-        window.location.replace("/");
-      }
     } catch (err) {
       console.log(err);
     }
@@ -42,10 +45,11 @@ function signupPage() {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                value={fullNameInput}
+                value={formState.fullName || ""}
                 type="text"
+                name="fullName"
                 className="validate"
-                onChange={(e) => setFullNameInput(e.target.value)}
+                onChange={handleInputChange}
               ></input>
               <label htmlFor="full-name-input">Full Name</label>
             </div>
@@ -53,10 +57,11 @@ function signupPage() {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                value={emailInput}
+                value={formState.email || ""}
                 type="text"
+                name="email"
                 className="validate"
-                onChange={(e) => setEmailInput(e.target.value)}
+                onChange={handleInputChange}
               ></input>
               <label htmlFor="name-input">Email</label>
             </div>
@@ -64,10 +69,11 @@ function signupPage() {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                value={passwordInput}
+                value={formState.password || ""}
                 type="password"
+                name="password"
                 className="validate"
-                onChange={(e) => setPasswordInput(e.target.value)}
+                onChange={handleInputChange}
               ></input>
               <label htmlFor="password-input">Password</label>
             </div>
@@ -75,10 +81,11 @@ function signupPage() {
           <div className="row">
             <div className="input-field col s12 ">
               <input
-                value={passwordConfirmInput}
+                value={formState.confirmPassword || ""}
                 type="password"
+                name="confirmPassword"
                 className="validate"
-                onChange={(e) => setPasswordConfirmInput(e.target.value)}
+                onChange={handleInputChange}
               ></input>
               <label htmlFor="password-confirm-input">Confirm Password</label>
             </div>
@@ -100,4 +107,4 @@ function signupPage() {
   );
 }
 
-export default signupPage;
+export default withRouter(signupPage);

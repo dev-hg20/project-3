@@ -23,7 +23,7 @@ function App() {
             <PrivateRoute exact path="/profile" component={profilePage} />
             <PrivateRoute exact path="/homepage" component={homePage} />
             <PrivateRoute exact path="/" component={homePage} />
-            <PrivateRoute exact path="/api/logout" component={loginPage} />
+            <PrivateRoute exact path="/logout" component={loginPage} />
           </Container>
         </Router>
       </div>

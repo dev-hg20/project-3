@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
+
 function Nav() {
+  const { setUser } = useContext(AuthContext);
   return (
     <nav className="nav-extended">
       <div className="nav-wrapper">
@@ -18,7 +21,9 @@ function Nav() {
             <Link to="/profile">Profile</Link>
           </li>
           <li>
-            <Link to="/logout">logout</Link>
+            <Link to="/logout" onClick={(e) => setUser(false)}>
+              logout
+            </Link>
           </li>
         </ul>
       </div>

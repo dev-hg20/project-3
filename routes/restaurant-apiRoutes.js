@@ -59,33 +59,33 @@ router.post("/", isAuthenticated, async function (req, res) {
   }
 });
 
-//PUT for updating posts
-router.put("/", isAuthenticated, async function (req, res) {
-  try {
-    const dbStory = await db.Story.update(req.body, {
-      where: {
-        id: req.body.id,
-      },
-    });
-    res.json(dbStory);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+// //PUT for updating posts
+// router.put("/", isAuthenticated, async function (req, res) {
+//   try {
+//     const dbStory = await db.Story.update(req.body, {
+//       where: {
+//         id: req.body.id,
+//       },
+//     });
+//     res.json(dbStory);
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// });
 
-//DELETE posts
-router.delete("/:id", isAuthenticated, async function (req, res) {
-  try {
-    const dbStory = await db.Story.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.json(dbStory);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+// //DELETE posts
+// router.delete("/:id", isAuthenticated, async function (req, res) {
+//   try {
+//     const dbStory = await db.Story.destroy({
+//       where: {
+//         id: req.params.id,
+//       },
+//     });
+//     res.json(dbStory);
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// });
 
 module.exports = router;
 

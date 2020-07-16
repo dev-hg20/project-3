@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import LeftMenu from "../components/LeftMenu";
 import ProfileCard from "../components/profileCard";
 import Card from "../components/RestaurantCard";
+import Nav from "../components/Nav";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../components/Context/AuthContext";
 
 function homePage() {
@@ -60,7 +62,7 @@ function homePage() {
             {/* Search form */}
             <div>
               <form onSubmit={handleSearch}>
-                <div class="input-field">
+                <div className="input-field">
                   <input
                     type="search"
                     required
@@ -68,13 +70,13 @@ function homePage() {
                     placeholder="Search"
                     onChange={(e) => setSearched(e.target.value)}
                   />
-                  <label class="label-icon" htmlFor="search">
-                    <i class="material-icons">search</i>
+                  <label className="label-icon" htmlFor="search">
+                    <i className="material-icons">search</i>
                   </label>
                 </div>
               </form>
             </div>
-
+            {/* render cuisine list */}
             {cuisines.map((cuisine) => {
               return (
                 <LeftMenu
@@ -88,6 +90,7 @@ function homePage() {
           </div>
         </div>
         <div className="col s8">
+          {/* render restaurant cards */}
           {filtered.map((restaurant) => {
             return (
               <Card
