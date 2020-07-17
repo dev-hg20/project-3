@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
+
+library.add(faStar);
 
 function SimpleRating() {
-  const [value, setValue] = useState();
-  return (
-    <Box component="fieldset" mb={3} borderColor="transparent">
-      <Typography component="legend">Read only</Typography>
-      <Rating name="read-only" value={value} readOnly />
-    </Box>
-  );
+  return <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>;
 }
 
 export default SimpleRating;
