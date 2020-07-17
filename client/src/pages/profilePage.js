@@ -18,6 +18,7 @@ function profilePage() {
   const classes = useStyles();
   const { user } = useContext(AuthContext);
   const [restaurants, setRestaurants] = useState([]);
+  const [newRestaurant, setNewRestaurants] = useState([]);
   const [restaurantNameInput, setRestaurantNameInput] = useState();
   const [mustTryInput, setMustTryInput] = useState();
   const [locationInput, setLocationInput] = useState();
@@ -27,7 +28,7 @@ function profilePage() {
 
   //For rendering restaurant cards
   useEffect(() => {
-    fetch("http://localhost:8080/api/restaurant")
+    fetch("http://localhost:8080/api/restaurant/")
       .then((res) => res.json())
       .then((data) => {
         setRestaurants(data);
@@ -43,12 +44,17 @@ function profilePage() {
       });
   }, []);
 
+  //printing latest post into restaurant array
+  async function newRestaurantList(value) {
+    setRestaurants([value, ...restaurants]);
+  }
+
   // Event handler for adding a restaurant
   async function handleFormSubmit(event) {
+    event.preventDefault();
     try {
-      event.preventDefault();
       //call to post restaurant info
-      axios.post("/api/restaurant", {
+      const response = await axios.post("/api/restaurant/", {
         name: restaurantNameInput,
         mustHave: mustTryInput,
         location: locationInput,
@@ -56,14 +62,13 @@ function profilePage() {
         CuisineId: cuisineId,
         UserId: user.dataValues.id,
       });
-      console.log(
-        restaurantNameInput,
-        mustTryInput,
-        locationInput,
-        priceInput,
-        cuisineId,
-        user.dataValues.id
-      );
+      newRestaurantList(response.data);
+
+      //filter the restaurant by UserId
+      const filteredRestaurants = response.data.filter((filter) => {
+        return filter.UserId === user.dataValues.id;
+      });
+      newRestaurantList(filteredRestaurants);
     } catch (err) {
       console.log(err);
     }
@@ -148,6 +153,7 @@ function profilePage() {
                     $ / $$ / $$$ / $$$$ / $$$$${" "}
                   </span>
                 </div>
+                {/* dropdown bar */}
                 <FormControl classes={classes.formControl} variant="outlined">
                   <InputLabel htmlFor="outlined-age-native-simple">
                     Cuisine
@@ -186,6 +192,7 @@ function profilePage() {
             {restaurants.map((restaurant) => {
               return (
                 <Card
+                  id={restaurant.UserId}
                   name={restaurant.name}
                   mustHave={restaurant.mustHave}
                   location={restaurant.location}
