@@ -62,13 +62,12 @@ function profilePage() {
         CuisineId: cuisineId,
         UserId: user.dataValues.id,
       });
-      newRestaurantList(response.data);
-
       //filter the restaurant by UserId
-      const filteredRestaurants = response.data.filter((filter) => {
-        return filter.UserId === user.dataValues.id;
-      });
-      newRestaurantList(filteredRestaurants);
+      // const filteredRestaurants = response.data.filter((filter) => {
+      //   return filter.UserId === user.dataValues.id;
+      // });
+
+      newRestaurantList(response.data);
     } catch (err) {
       console.log(err);
     }
