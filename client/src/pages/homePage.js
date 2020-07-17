@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import LeftMenu from "../components/LeftMenu";
 import ProfileCard from "../components/profileCard";
 import Card from "../components/RestaurantCard";
-import Nav from "../components/Nav";
-import { Link } from "react-router-dom";
+// import Nav from "../components/Nav";
+// import { Link } from "react-router-dom";
 import { AuthContext } from "../components/Context/AuthContext";
 
 function homePage() {
@@ -54,8 +54,8 @@ function homePage() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col s4 m4 l3">
+      <div className="row rstlist">
+        <div className="col s12 m10 l4">
           <div>
             <ProfileCard fullname={user.dataValues.fullName}></ProfileCard>
 
@@ -89,7 +89,7 @@ function homePage() {
             })}
           </div>
         </div>
-        <div className="col s8">
+        <div className="col s12 m12 l8 center-align">
           {/* render restaurant cards */}
           {filtered.map((restaurant) => {
             return (

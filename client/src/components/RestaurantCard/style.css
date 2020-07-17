@@ -33,3 +33,7 @@ span {
 .wholecard {
   padding-left: 120px;
 }
+
+.rstlist {
+  float: right;
+}

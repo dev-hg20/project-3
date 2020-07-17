@@ -67,7 +67,7 @@ function profilePage() {
   return (
     <div className="container">
       <div className="row s12">
-        <div className="col s4 center-align">
+        <div className="col s12 m6 l4 center-align">
           <div className="blue-grey-text left-align hidden user-profile-image">
             {/* render profile cards */}
             <ProfileCard
@@ -110,7 +110,7 @@ function profilePage() {
                 </div>
               </div>
               <div className="row">
-                <div className="input-field col s4">
+                <div className="input-field col s6 m4 l4">
                   <input
                     id={locationInput}
                     type="text"
@@ -126,7 +126,7 @@ function profilePage() {
                     CBD/Russell St
                   </span>
                 </div>
-                <div className="input-field col s4">
+                <div className="input-field col s6 m4 l4">
                   <input
                     id={priceInput}
                     type="text"
@@ -177,8 +177,8 @@ function profilePage() {
               </button>
             </form>
           </div>
-
-          <div>
+          <br />
+          <div style={{ marginTop: 100 }}>
             {restaurants
               .filter((restaurant) => restaurant.UserId === user.dataValues.id)
               .map((restaurant) => (
