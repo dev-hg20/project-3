@@ -1,0 +1,9 @@
+.collection {
+  font-family: "Open Sans", sans-serif;
+}
+
+@media only screen and (max-width: 400px) {
+  .collection {
+    font-family: "Open Sans", sans-serif;
+  }
+}

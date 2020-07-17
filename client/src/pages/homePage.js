@@ -55,7 +55,7 @@ function homePage() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col s4">
+        <div className="col s4 m4 l3">
           <div>
             <ProfileCard fullname={user.dataValues.fullName}></ProfileCard>
 

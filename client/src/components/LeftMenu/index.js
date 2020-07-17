@@ -1,9 +1,9 @@
 import React from "react";
-// import { Link } from "@material-ui/core";
+import "./style.css";
 
 function LeftMenu(props) {
   return (
-    <div>
+    <div class="col s12">
       <ul className="collection">
         <a className="collection-item" onClick={props.onClick} id={props.id}>
           {props.name}

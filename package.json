@@ -34,7 +34,7 @@
     "express-session": "^1.17.1",
     "fontsource-roboto": "^2.1.4",
     "if-env": "^1.0.4",
-    "materialize-css": "^1.0.0-rc.2",
+    "materialize-css": "^1.0.0",
     "mongoose": "^5.3.16",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
@@ -44,6 +44,8 @@
     "react-bootstrap": "^1.1.0",
     "react-dom": "^16.13.1",
     "react-event-handler": "^1.0.0",
+    "react-materialize": "^3.9.2",
+    "react-modal": "^3.11.2",
     "react-rating": "^2.0.5",
     "react-router-dom": "^5.2.0",
     "sequelize": "^6.3.0"

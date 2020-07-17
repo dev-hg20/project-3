@@ -1,3 +1,17 @@
 nav {
-  background-color: 074f57;
+  background-color: #074f57;
+}
+
+.nav-title {
+  font-family: "Open Sans", sans-serif;
+}
+
+ul {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  padding-right: 10px;
+  border: 5px;
+}
+
+@media screen and (max-width: 600px) {
 }

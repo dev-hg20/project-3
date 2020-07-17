@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
+import Modal from "react-modal";
 import { AuthContext } from "../components/Context/AuthContext";
+import ModalStructure from "../components/Modal";
 
 const axios = require("axios");
 
 function signupPage({ history }) {
   const { setUser } = useContext(AuthContext);
+  // const [isOpen, setIsOpen] = useState(false);
   const [formState, setFormState] = useState({});
 
   const handleInputChange = ({ target: { name, value } }) =>
@@ -96,12 +99,16 @@ function signupPage({ history }) {
                 className="btn waves-effect waves-light rounded"
                 type="submit"
                 onClick={handleFormSubmit}
+                // onClick={() => setIsOpen(true)}
               >
                 Sign in
-              </button>
+              </button>{" "}
             </div>
           </div>
         </form>
+        {/* <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+          <button></button>
+        </Modal> */}
       </div>
     </div>
   );

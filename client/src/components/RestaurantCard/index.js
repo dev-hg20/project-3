@@ -1,29 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import SimpleRating from "../SimpleRating";
 import AddButton from "../AddButton";
-// import Box from "@material-ui/core/Box";
+import "./style.css";
 
 function Cards(props) {
-  const [rating] = useState(props.averageRating);
-
   return (
     <div className="row">
-      <div className="col s12 m6">
-        <div className="card blue-grey darken-1">
-          <div className="card-content white-text">
+      <div className="col s12 m8 l9 wholecard">
+        <div className="card">
+          <div className="card-content">
             <span className="card-title">{props.name}</span>
+            <hr></hr>
             <ul>
-              <li>Must Try: {props.mustHave}</li>
-              <li>Location: {props.location}</li>
-              <li>Price: {props.price}</li>
+              <li>
+                <span>Must Try: </span>
+                {props.mustHave}
+              </li>
+              <li>
+                <span>Location: </span>
+                {props.location}
+              </li>
+              <li>
+                <span>Price: </span>
+                {props.price}
+              </li>
               {/* <li>Rating:{props.averageRating}</li> */}
-              <br></br>
-              <SimpleRating value={props.averageRating}></SimpleRating>
+              {/* <SimpleRating value={props.averageRating}></SimpleRating> */}
             </ul>
-            <AddButton></AddButton>
+            {/* <AddButton></AddButton> */}
           </div>
-          <div className="card-action">
-            <a href="value">This is a link to the restaurant</a>
+          <div className="card-action amber darken-2">
+            <SimpleRating value={props.averageRating}></SimpleRating>
           </div>
         </div>
       </div>

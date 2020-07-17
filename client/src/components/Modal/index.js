@@ -1,6 +1,6 @@
 import React from "react";
 
-function Modals(props) {
+function ModalStructure(props) {
   const { mod } = props;
   return (
     <div id="search-modal" class="modal">
@@ -19,4 +19,4 @@ function Modals(props) {
   );
 }
 
-export default Modals;
+export default ModalStructure;

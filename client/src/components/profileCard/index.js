@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../Asset/user_avatar.png";
+import "./style.css";
 
 function ProfileCard(props) {
   return (
@@ -11,6 +12,7 @@ function ProfileCard(props) {
             alt="user avatar"
             className="circle responsive-img avatar-img"
           ></img>
+          <br></br>
           <div className="title">{props.fullname}</div>
         </div>
       </div>
