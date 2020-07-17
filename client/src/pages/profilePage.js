@@ -18,7 +18,6 @@ function profilePage() {
   const classes = useStyles();
   const { user } = useContext(AuthContext);
   const [restaurants, setRestaurants] = useState([]);
-  const [newRestaurant, setNewRestaurants] = useState([]);
   const [restaurantNameInput, setRestaurantNameInput] = useState();
   const [mustTryInput, setMustTryInput] = useState();
   const [locationInput, setLocationInput] = useState();
@@ -44,17 +43,13 @@ function profilePage() {
       });
   }, []);
 
-  //printing latest post into restaurant array
-  async function newRestaurantList(value) {
-    setRestaurants([value, ...restaurants]);
-  }
-
   // Event handler for adding a restaurant
   async function handleFormSubmit(event) {
     event.preventDefault();
+    console.log("effect");
     try {
       //call to post restaurant info
-      const response = await axios.post("/api/restaurant/", {
+      const { data } = await axios.post("/api/restaurant/", {
         name: restaurantNameInput,
         mustHave: mustTryInput,
         location: locationInput,
@@ -62,12 +57,8 @@ function profilePage() {
         CuisineId: cuisineId,
         UserId: user.dataValues.id,
       });
-      //filter the restaurant by UserId
-      // const filteredRestaurants = response.data.filter((filter) => {
-      //   return filter.UserId === user.dataValues.id;
-      // });
-
-      newRestaurantList(response.data);
+      // filter the restaurant by UserId
+      setRestaurants([data, ...restaurants]);
     } catch (err) {
       console.log(err);
     }
@@ -188,8 +179,9 @@ function profilePage() {
           </div>
 
           <div>
-            {restaurants.map((restaurant) => {
-              return (
+            {restaurants
+              .filter((restaurant) => restaurant.UserId === user.dataValues.id)
+              .map((restaurant) => (
                 <Card
                   id={restaurant.UserId}
                   name={restaurant.name}
@@ -197,9 +189,8 @@ function profilePage() {
                   location={restaurant.location}
                   price={restaurant.price}
                   averageRating={restaurant.averageRating}
-                ></Card>
-              );
-            })}
+                />
+              ))}
           </div>
         </div>
       </div>

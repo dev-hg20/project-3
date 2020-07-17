@@ -9,36 +9,30 @@ function Nav() {
     <nav className="nav-extended">
       <div className="nav-wrapper">
         <ul className="right hide-on-med-and-down">
-          {(() => {
-            if (user) {
-              return (
-                <div>
-                  <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/profile">Profile</Link>
-                  </li>
-                  <li>
-                    <Link to="/logout" onClick={(e) => setUser(false)}>
-                      Logout
-                    </Link>
-                  </li>
-                </div>
-              );
-            } else {
-              return (
-                <div>
-                  <li>
-                    <Link to="/signup">Sign up</Link>
-                  </li>
-                  <li>
-                    <Link to="/login">Log In</Link>
-                  </li>
-                </div>
-              );
-            }
-          })()}
+          {user ? (
+            <div>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="/logout" onClick={(e) => setUser(false)}>
+                  Logout
+                </Link>
+              </li>
+            </div>
+          ) : (
+            <div>
+              <li>
+                <Link to="/signup">Sign up</Link>
+              </li>
+              <li>
+                <Link to="/login">Log In</Link>
+              </li>
+            </div>
+          )}
         </ul>
       </div>
       <div className="nav-content">
