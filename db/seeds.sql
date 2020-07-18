@@ -1,10 +1,44 @@
 USE taco_db;
 
-
-INSERT INTO Cuisines (name) VALUES ("Italian");
-INSERT INTO Cuisines (name) VALUES ("Chinese");
-INSERT INTO Cuisines (name) VALUES ("Mongolian");
-INSERT INTO Cuisines (name) VALUES ("Argentinian");
+   
+INSERT INTO Cuisines (name)VALUES("Argentinian");
+INSERT INTO Cuisines (name)VALUES("Asian Fusion");
+INSERT INTO Cuisines (name)VALUES("Bar");
+INSERT INTO Cuisines (name)VALUES("Bars");
+INSERT INTO Cuisines (name)VALUES("Brunch");
+INSERT INTO Cuisines (name)VALUES("Chinese");
+INSERT INTO Cuisines (name)VALUES("Craft Beers");
+INSERT INTO Cuisines (name)VALUES("Dumplings");
+INSERT INTO Cuisines (name)VALUES("Hidden Bar");
+INSERT INTO Cuisines (name)VALUES("Indian");
+INSERT INTO Cuisines (name)VALUES("Italian");
+INSERT INTO Cuisines (name)VALUES("Japanese");
+INSERT INTO Cuisines (name)VALUES("Korean");
+INSERT INTO Cuisines (name)VALUES("Korean BBQ");
+INSERT INTO Cuisines (name)VALUES("Korean Fusion");
+INSERT INTO Cuisines (name)VALUES("Malaysian");
+INSERT INTO Cuisines (name)VALUES("Mediterranean");
+INSERT INTO Cuisines (name)VALUES("Mexican");
+INSERT INTO Cuisines (name)VALUES("Middle Eastern");
+INSERT INTO Cuisines (name)VALUES("Modern Australian");
+INSERT INTO Cuisines (name)VALUES("Modern French");
+INSERT INTO Cuisines (name)VALUES("Modern Japanese");
+INSERT INTO Cuisines (name)VALUES("Modern Middle East");
+INSERT INTO Cuisines (name)VALUES("Modern Vietnamese");
+INSERT INTO Cuisines (name)VALUES("Mongolian");
+INSERT INTO Cuisines (name)VALUES("Peruvian");
+INSERT INTO Cuisines (name)VALUES("Polish");
+INSERT INTO Cuisines (name)VALUES("Pop Up");
+INSERT INTO Cuisines (name)VALUES("Ramen");
+INSERT INTO Cuisines (name)VALUES("Seafood");
+INSERT INTO Cuisines (name)VALUES("Souh East Asian Fusion");
+INSERT INTO Cuisines (name)VALUES("South East Asian");
+INSERT INTO Cuisines (name)VALUES("South East Asian Fusion");
+INSERT INTO Cuisines (name)VALUES("Spanish");
+INSERT INTO Cuisines (name)VALUES("Tapas");
+INSERT INTO Cuisines (name)VALUES("Thai");
+INSERT INTO Cuisines (name)VALUES("Vietnamese");
+INSERT INTO Cuisines (name)VALUES("Yumcha");
 
 -- SELECT * FROM Cuisines;
 
