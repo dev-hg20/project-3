@@ -8,13 +8,6 @@ import { AuthContext } from "../components/Context/AuthContext";
 
 const axios = require("axios");
 
-// const useStyles = makeStyles((theme) => ({
-//   formControl: {
-//     margin: theme.spacing(1),
-//     minWidth: 200,
-//   },
-// }));
-
 function profilePage() {
   // const classes = useStyles();
   const { user } = useContext(AuthContext);
@@ -28,7 +21,8 @@ function profilePage() {
 
   //For rendering restaurant cards
   useEffect(() => {
-    fetch("http://localhost:8080/api/restaurant/")
+    // fetch("http://localhost:8080/api/restaurant/")
+    fetch("/api/restaurant/")
       .then((res) => res.json())
       .then((data) => {
         setRestaurants(data);
@@ -37,7 +31,7 @@ function profilePage() {
 
   //For rendering dropdown cuisine list
   useEffect(() => {
-    fetch("http://localhost:8080/api/restaurant/category")
+    fetch("/api/restaurant/category")
       .then((res) => res.json())
       .then((data) => {
         setCuisines(data);
@@ -162,11 +156,7 @@ function profilePage() {
                   >
                     <option aria-label="None" value="" />
                     {cuisines.map((cuisine) => {
-                      return (
-                        <option value={cuisine.id} key={cuisine.id}>
-                          {cuisine.name}
-                        </option>
-                      );
+                      return <option value={cuisine.id}>{cuisine.name}</option>;
                     })}
                   </Select>
                 </FormControl>
