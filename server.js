@@ -1,5 +1,5 @@
 const express = require("express");
-const session = require("express-session");
+//const session = require("express-session");
 const passport = require("./config/passport");
 const db = require("./models");
 const htmlRoutes = require("./routes/htmlRoutes");
@@ -29,9 +29,9 @@ if (process.env.NODE_ENV === "production") {
 // app.use(cors({ origin: "http://localhost:3000" }));
 
 // Configure express to use sessions and passport middleware for authentication
-app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-);
+// app.use(
+//   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+// );
 app.use(passport.initialize());
 app.use(passport.session());
 
