@@ -14,14 +14,14 @@ function homePage() {
   const [searched, setSearched] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/restaurant")
+    fetch("/api/restaurant")
       .then((res) => res.json())
       .then((data) => {
         setRestaurants(data);
         setFiltered(data);
         setSearched(data);
       });
-    fetch("http://localhost:8080/api/restaurant/category")
+    fetch("/api/restaurant/category")
       .then((res) => res.json())
       .then((data) => {
         setCuisines(data);

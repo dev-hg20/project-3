@@ -33,7 +33,6 @@ INSERT INTO Cuisines (name)VALUES("Ramen");
 INSERT INTO Cuisines (name)VALUES("Seafood");
 INSERT INTO Cuisines (name)VALUES("Souh East Asian Fusion");
 INSERT INTO Cuisines (name)VALUES("South East Asian");
-INSERT INTO Cuisines (name)VALUES("South East Asian Fusion");
 INSERT INTO Cuisines (name)VALUES("Spanish");
 INSERT INTO Cuisines (name)VALUES("Tapas");
 INSERT INTO Cuisines (name)VALUES("Thai");
