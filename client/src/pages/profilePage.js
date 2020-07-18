@@ -1,21 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FormControl, InputLabel, Select } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import ProfileCard from "../components/profileCard";
 import Card from "../components/RestaurantCard";
 import Quote from "../components/Quote";
 import { AuthContext } from "../components/Context/AuthContext";
+
 const axios = require("axios");
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 200,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   formControl: {
+//     margin: theme.spacing(1),
+//     minWidth: 200,
+//   },
+// }));
 
 function profilePage() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const { user } = useContext(AuthContext);
   const [restaurants, setRestaurants] = useState([]);
   const [restaurantNameInput, setRestaurantNameInput] = useState();
@@ -97,7 +98,7 @@ function profilePage() {
                     className="validate"
                     onChange={(e) => setRestaurantNameInput(e.target.value)}
                   />
-                  <label for="first_name">Restaurant Name</label>
+                  <label htmlFor="first_name">Restaurant Name</label>
                 </div>
                 <div className="input-field col s6">
                   <input
@@ -106,7 +107,7 @@ function profilePage() {
                     className="validate"
                     onChange={(e) => setMustTryInput(e.target.value)}
                   />
-                  <label for="first_name">Must Try</label>
+                  <label htmlFor="first_name">Must Try</label>
                 </div>
               </div>
               <div className="row">
@@ -117,7 +118,7 @@ function profilePage() {
                     className="validate"
                     onChange={(e) => setLocationInput(e.target.value)}
                   />
-                  <label for="first_name">Location </label>
+                  <label htmlFor="first_name">Location </label>
                   <span
                     className="helper-text"
                     data-error="wrong"
@@ -133,7 +134,7 @@ function profilePage() {
                     className="validate"
                     onChange={(e) => setPriceInput(e.target.value)}
                   />
-                  <label for="first_name">Price</label>
+                  <label htmlFor="first_name">Price</label>
                   <span
                     className="helper-text"
                     data-error="wrong"
@@ -144,7 +145,7 @@ function profilePage() {
                   </span>
                 </div>
                 {/* dropdown bar */}
-                <FormControl classes={classes.formControl} variant="outlined">
+                <FormControl variant="outlined">
                   <InputLabel htmlFor="outlined-age-native-simple">
                     Cuisine
                   </InputLabel>
@@ -161,7 +162,11 @@ function profilePage() {
                   >
                     <option aria-label="None" value="" />
                     {cuisines.map((cuisine) => {
-                      return <option value={cuisine.id}>{cuisine.name}</option>;
+                      return (
+                        <option value={cuisine.id} key={cuisine.id}>
+                          {cuisine.name}
+                        </option>
+                      );
                     })}
                   </Select>
                 </FormControl>
@@ -177,21 +182,22 @@ function profilePage() {
               </button>
             </form>
           </div>
-          <br />
-          <div style={{ marginTop: 100 }}>
-            {restaurants
-              .filter((restaurant) => restaurant.UserId === user.dataValues.id)
-              .map((restaurant) => (
-                <Card
-                  id={restaurant.UserId}
-                  name={restaurant.name}
-                  mustHave={restaurant.mustHave}
-                  location={restaurant.location}
-                  price={restaurant.price}
-                  averageRating={restaurant.averageRating}
-                />
-              ))}
-          </div>
+        </div>
+        <div style={{ height: 20 }}></div>
+        <div className="row">
+          {restaurants
+            .filter((restaurant) => restaurant.UserId === user.dataValues.id)
+            .map((restaurant) => (
+              <Card
+                key={restaurant.id}
+                id={restaurant.UserId}
+                name={restaurant.name}
+                mustHave={restaurant.mustHave}
+                location={restaurant.location}
+                price={restaurant.price}
+                averageRating={restaurant.averageRating}
+              />
+            ))}
         </div>
       </div>
     </div>

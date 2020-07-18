@@ -1,6 +1,6 @@
 import React from "react";
 import SimpleRating from "../SimpleRating";
-import AddButton from "../AddButton";
+
 import "./style.css";
 
 function Cards(props) {
@@ -27,7 +27,6 @@ function Cards(props) {
               {/* <li>Rating:{props.averageRating}</li> */}
               {/* <SimpleRating value={props.averageRating}></SimpleRating> */}
             </ul>
-            {/* <AddButton></AddButton> */}
           </div>
           <div className="card-action amber darken-2">
             <SimpleRating value={props.averageRating}></SimpleRating>

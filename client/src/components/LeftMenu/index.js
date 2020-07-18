@@ -3,9 +3,14 @@ import "./style.css";
 
 function LeftMenu(props) {
   return (
-    <div class="col s12">
+    <div className="col s12">
       <ul className="collection">
-        <a className="collection-item" onClick={props.onClick} id={props.id}>
+        <a
+          href="#!"
+          className="collection-item"
+          onClick={props.onClick}
+          id={props.id}
+        >
           {props.name}
         </a>
       </ul>

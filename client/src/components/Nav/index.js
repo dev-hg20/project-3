@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import "./style.css";
-import { blue } from "@material-ui/core/colors";
 
 function Nav() {
   const { user, setUser } = useContext(AuthContext);
