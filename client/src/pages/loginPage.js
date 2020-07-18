@@ -73,6 +73,11 @@ function loginPage({ history }) {
                 type="submit"
                 onClick={handleFormSubmit}
               >
+                {/* {handleFormSubmit(false) ? (
+                  <div>Sign in Success</div>
+                ) : (
+                  <div>Maybe try again? Incorrect Password/Email</div>
+                )} */}
                 Login
               </button>
             </div>

@@ -35,19 +35,6 @@ router.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-// GET data about user
-// router.get("/user_data", function (req, res) {
-//   if (req.user) {
-//     const userData = res.json({
-//       email: req.user.email,
-//       fullName: req.user.fullName,
-//       password: req.user.password,
-//     });
-//     res.json({ userData });
-//   }
-//   res.json({});
-// });
-
 // GET ALL restaurants for the current user
 router.get("/user/restaurants/:id", isAuthenticated, async function (req, res) {
   try {

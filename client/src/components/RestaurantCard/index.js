@@ -24,8 +24,6 @@ function Cards(props) {
                 <span>Price: </span>
                 {props.price}
               </li>
-              {/* <li>Rating:{props.averageRating}</li> */}
-              {/* <SimpleRating value={props.averageRating}></SimpleRating> */}
             </ul>
           </div>
           <div className="card-action amber darken-2">

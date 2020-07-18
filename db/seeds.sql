@@ -8,9 +8,8 @@ INSERT INTO Cuisines (name) VALUES ("Argentinian");
 
 -- SELECT * FROM Cuisines;
 
-INSERT INTO Users (email, fullName, password) VALUES ("test","test","$2a$10$OLoLgy1vJFAZBbxUAPqVJuYvTxTwPYIi1Sxk4rb.PKAYgWqahTstq");
-INSERT INTO Users (email, fullName, password) VALUES ("haylie","haylie","$2a$10$OLoLgy1vJFAZBbxUAPqVJuYvTxTwPYIi1Sxk4rb.PKAYgWqahTstq");
-INSERT INTO Users (email, fullName, password) VALUES ("wagner","wagner","$2a$10$OLoLgy1vJFAZBbxUAPqVJuYvTxTwPYIi1Sxk4rb.PKAYgWqahTstq");
+INSERT INTO Users (email, fullName, password) VALUES ("h.g@test.com","haylie","$2a$10$OLoLgy1vJFAZBbxUAPqVJuYvTxTwPYIi1Sxk4rb.PKAYgWqahTstq");
+
 
 -- SELECT * FROM Users;
 

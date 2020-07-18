@@ -9,7 +9,7 @@ router.get("/", async function (req, res) {
     const dbRestaurant = await db.sequelize.query(`
       select
         restaurant.*,
-        coalesce(avg(review.Rating), 1) as averageRating
+        coalesce(avg(review.Rating), 4) as averageRating
       from Restaurants restaurant
       left join Reviews review on review.RestaurantId = restaurant.Id
       group by restaurant.Id, restaurant.Name, restaurant.mustHave, restaurant.location, restaurant.price, restaurant.CuisineId, restaurant.CreatedAt, restaurant.UpdatedAt
@@ -59,44 +59,4 @@ router.post("/", isAuthenticated, async function (req, res) {
   }
 });
 
-// //PUT for updating posts
-// router.put("/", isAuthenticated, async function (req, res) {
-//   try {
-//     const dbStory = await db.Story.update(req.body, {
-//       where: {
-//         id: req.body.id,
-//       },
-//     });
-//     res.json(dbStory);
-//   } catch (err) {
-//     res.status(500).send(err.message);
-//   }
-// });
-
-// //DELETE posts
-// router.delete("/:id", isAuthenticated, async function (req, res) {
-//   try {
-//     const dbStory = await db.Story.destroy({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     res.json(dbStory);
-//   } catch (err) {
-//     res.status(500).send(err.message);
-//   }
-// });
-
 module.exports = router;
-
-//GET all the restaurants for all Cuisine
-// router.get("/cuisine", async function (req, res) {
-//   try {
-//     const dbRestaurant = await db.Restaurant.findAll({
-//       include: [db.Cuisine],
-//     });
-//     res.json(dbRestaurant);
-//   } catch (err) {
-//     res.status(500).send(err.message);
-//   }
-// });

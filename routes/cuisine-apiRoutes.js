@@ -8,13 +8,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 // GET the list cuisines
 router.get("/", async function (req, res) {
   try {
-    const dbCuisine = await db.Cuisine.findAll({
-      //   where: {
-      //     CuisineId: req.params.id,
-      //   },
-      //   order: [["updatedAt", "DESC"]],
-      //   include: [db.Cuisine],
-    });
+    const dbCuisine = await db.Cuisine.findAll({});
     res.json(dbCuisine);
   } catch (err) {
     res.status(500).send(err.message);
